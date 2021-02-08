@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <form name="f1" id="f1">
+        <select name="number" id="select1">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <select name="number" id="select2">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <select name="number" id="select3">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <select name="number" id="select4">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <select name="number" id="select5">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <input id="input1">
+        <input id="input2">
+
+        <button type="button" class="button" onclick="getAllValue()" value="send">send</button>
+    </form>
+
+    <div class="result-container">
+
+    </div>
+    <script>
+        const container = document.querySelector('.result-container');
+
+
+        function sendAllValue(submitData) {
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST', // нужно указать метод запроса
+                // тело запроса
+                body: JSON.stringify({
+                    data: submitData,
+                }),
+                // и заголовки
+                headers: {
+                    'Content-Type': 'application/json; charset=UTF-8'
+                }
+            })
+                .then((res) => {
+                    return res.json();
+                })
+
+                .then((data) => {
+                    console.log(data)
+                    alert(data.data);
+                    document.querySelector('.result-container').innerHTML = data.data;
+                })
+        }
+
+        function getAllValue() {
+            let s1 = document.getElementById('select1').value;
+            let s2 = document.getElementById('select2').value;
+            let s3 = document.getElementById('select3').value;
+            let s4 = document.getElementById('select4').value;
+            let s5 = document.getElementById('select5').value;
+            let i1 = document.getElementById('input1').value;
+            let i2 = document.getElementById('input2').value;
+
+            let sumResult = s1 + s2 + s3 + s4 + s5 + i1 + i2;
+
+            sendAllValue(sumResult)
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
