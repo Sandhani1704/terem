@@ -72,6 +72,10 @@
                     alert(data.data);
                     document.querySelector('.result-container').innerHTML = data.data;
                 })
+
+                .catch((err) => {
+                    console.log(`Ошибка: ${err}`)
+                })
         }
 
         function getAllValue() {
