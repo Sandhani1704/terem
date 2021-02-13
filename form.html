@@ -41,7 +41,8 @@
         <input id="input1">
         <input id="input2">
 
-        <button type="button" class="button" onclick="getAllValue()" value="send">send</button>
+        <!-- <button type="button" class="button" onclick="getAllValue()" value="send">send</button> -->
+        <button type="button" class="button" value="send">send</button>
     </form>
 
     <div class="result-container">
@@ -92,6 +93,8 @@
             sendAllValue(sumResult)
 
         }
+
+        document.querySelector('.button').addEventListener('click', getAllValue)
 
 
 
